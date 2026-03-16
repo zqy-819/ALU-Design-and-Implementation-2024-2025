@@ -1,0 +1,110 @@
+# header information:
+HVSP|9.07
+
+# Views:
+Vicon|ic
+Vlayout|lay
+Vschematic|sch
+
+# Technologies:
+Tmocmos|ScaleFORmocmos()D300.0|mocmosAnalog()BT|mocmosNumberOfMetalLayers()I3
+
+# Cell inv;1{ic}
+Cinv;1{ic}||artwork|1731336939193|1731337147276|E
+Ngeneric:Facet-Center|art@0||0|0||||AV
+NTriangle|art@1||-2|0|6|6|RRR|
+NCircle|art@3||1.5|0|1|1||
+Nschematic:Bus_Pin|pin@0||-7|0||||
+Nschematic:Wire_Pin|pin@1||-5|0||||
+Nschematic:Bus_Pin|pin@2||5|0|||RR|
+Nschematic:Wire_Pin|pin@3||2|0|||RR|
+Aschematic:wire|net@0|||0|pin@1||-5|0|pin@0||-7|0
+Aschematic:wire|net@1|||1800|pin@3||2|0|pin@2||5|0
+Ein||D5G2;|pin@0||U
+Eout||D5G2;|pin@2||U
+X
+
+# Cell inv;1{lay}
+Cinv;1{lay}||mocmos|1731337552368|1732560319094||DRC_last_good_drc_area_date()G1732560343489|DRC_last_good_drc_bit()I18|DRC_last_good_drc_date()G1732560343489
+Ngeneric:Facet-Center|art@0||0|0||||AV
+NMetal-1-P-Active-Con|contact@0||-4|25|25||RRR|
+NMetal-1-P-Active-Con|contact@1||4|25|25||RRR|
+NMetal-1-N-Active-Con|contact@2||4|-44.5|20||RRR|
+NMetal-1-N-Active-Con|contact@3||-4|-44.5|20||RRR|
+NMetal-1-Polysilicon-1-Con|contact@4||-10|-12.5||||
+NN-Transistor|nmos@0||0|-44.5|22||RRR||SIM_spice_model(D5G2;)SNMOS
+NPolysilicon-1-Pin|pin@0||0|-12.5||||
+NMetal-1-Pin|pin@1||10|-12.5||||
+NMetal-1-Pin|pin@2||4|-12.5||||
+NP-Transistor|pmos@0||0|25|27||RRR||SIM_spice_model(D5G2;)SPMOS
+NMetal-1-P-Well-Con|substr@0||0|-63.5|14|||
+NMetal-1-N-Well-Con|well@0||0|46.5|14|||
+AP-Active|net@0|||S0|contact@1||4.5|25|pmos@0|diff-top|3.75|25
+AP-Active|net@1|||S1800|contact@0||-4.5|25|pmos@0|diff-bottom|-3.75|25
+AN-Active|net@2|||S0|contact@2||4.5|-45|nmos@0|diff-top|3.75|-45
+AN-Active|net@3|||S1800|contact@3||-4.5|-45|nmos@0|diff-bottom|-3.75|-45
+APolysilicon-1|net@8|||S900|pmos@0|poly-right|0|8|pin@0||0|-12.5
+APolysilicon-1|net@9|||S900|pin@0||0|-12.5|nmos@0|poly-left|0|-30
+APolysilicon-1|net@10|||S1800|contact@4||-10|-12.5|pin@0||0|-12.5
+AMetal-1|net@15||1|S900|contact@1||4|26.5|pin@2||4|-12.5
+AMetal-1|net@16||1|S900|pin@2||4|-12.5|contact@2||4|-45
+AMetal-1|net@17|||S0|pin@1||10|-12.5|pin@2||4|-12.5
+AMetal-1|net@19||1|S2700|contact@0||-4|25|well@0||-4|46.5
+AMetal-1|net@20||1|S900|contact@3||-4|-44.5|substr@0||-4|-63.5
+Egnd||D5G4;|substr@0||U
+Ein||D5G5;|contact@4||U
+Eout||D5G5;|pin@1||U
+Evdd||D5G5;|well@0||U
+X
+
+# Cell inv;1{sch}
+Cinv;1{sch}||schematic|1731336744889|1732305663674|
+Ngeneric:Facet-Center|art@0||0|0||||AV
+NOff-Page|conn@0||-6|0||||
+NOff-Page|conn@1||5|0||||
+NGround|gnd@0||1|-8||||
+Iinv;1{ic}|inv@0||12|16|||D5G4;
+NTransistor|nmos@0||-1|-3|||R||ATTR_length(D5G1;X-0.5;Y-1;)S2|ATTR_width(D5G1;X0.5;Y-1;)S25|SIM_spice_model(D5G1;X-1;Y-4;)SNMOS
+NWire_Pin|pin@0||-2|0||||
+NWire_Pin|pin@1||1|0||||
+NTransistor|pmos@0||-1|4|||YR|2|ATTR_length(D5G1;X-0.5;Y-1;)S2|ATTR_width(D5G1;X0.5;Y-1;)S30|SIM_spice_model(D5G1;Y-4;)SPMOS
+NPower|pwr@0||1|9||||
+Awire|net@2|||2700|pmos@0|s|1|6|pwr@0||1|9
+Awire|net@3|||900|nmos@0|s|1|-5|gnd@0||1|-6
+Awire|net@4|||900|pmos@0|g|-2|4|pin@0||-2|0
+Awire|net@5|||900|pin@0||-2|0|nmos@0|g|-2|-3
+Awire|net@6|||1800|conn@0|y|-4|0|pin@0||-2|0
+Awire|net@7|||900|pmos@0|d|1|2|pin@1||1|0
+Awire|net@8|||900|pin@1||1|0|nmos@0|d|1|-1
+Awire|net@9|||0|conn@1|a|3|0|pin@1||1|0
+Ein||D5G2;X-1;|conn@0|a|U
+Eout||D5G2;X5;|conn@1|a|U
+X
+
+# Cell inv_sim;1{lay}
+Cinv_sim;1{lay}||mocmos|1731338320414|1732560317338||DRC_last_good_drc_area_date()G1732560348728|DRC_last_good_drc_bit()I18|DRC_last_good_drc_date()G1732560348728
+Ngeneric:Facet-Center|art@0||0|0||||AV
+Iinv;1{lay}|inv@0||0|-10|||D5G4;
+NMetal-1-Pin|pin@0||-24|-23||||
+NMetal-1-Pin|pin@2||26|-22.5||||
+NMetal-1-Pin|pin@3||-27|37||||
+Ngeneric:Invisible-Pin|pin@5||-58|2|||||SIM_spice_card(D5G3;)S[vdd vdd 0 DC 5,vin in 0 DC 0,.dc vin 0 5 1m,".include C:\\Users\\R9000X\\Electric\\C5_models.txt"]
+NMetal-1-Pin|pin@6||-24|-74||||
+AMetal-1|in|D5G2;|1|S0|inv@0|in|-10|-23|pin@0||-24|-23
+AMetal-1|net@6||1|S0|inv@0|vdd|0|37|pin@3||-27|37
+AMetal-1|net@7||1|S0|inv@0|gnd|0|-74|pin@6||-24|-74
+AMetal-1|out|D5G2;||S1800|inv@0|out|10|-22.5|pin@2||26|-22.5
+Egnd||D5G2;|pin@6||U
+Evdd||D5G2;|pin@3||U
+X
+
+# Cell inv_sim;1{sch}
+Cinv_sim;1{sch}||schematic|1731337171079|1731337352529|
+Ngeneric:Facet-Center|art@0||0|0||||AV
+Iinv;1{ic}|inv@0||2|0|||D5G4;
+NWire_Pin|pin@0||10|0||||
+NWire_Pin|pin@1||-8|0||||
+Ngeneric:Invisible-Pin|pin@2||-4|-8|||||SIM_spice_card(D5G1;)S[vdd vdd 0 DC 5,vin in 0 DC 0,.dc vin 0 5 1m,".include C:\\Users\\R9000X\\Electric\\C5_models.txt"]
+Awire|in|D5G1;||0|inv@0|in|-5|0|pin@1||-8|0
+Awire|out|D5G1;||1800|inv@0|out|7|0|pin@0||10|0
+X
