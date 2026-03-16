@@ -1,0 +1,62 @@
+*** SPICE deck for cell BakerAdder_sim{sch} from library BakerAdder
+*** Created on 星期一 十一月 11, 2024 20:51:47
+*** Last revised on 星期一 十一月 25, 2024 18:55:51
+*** Written on 星期一 十一月 25, 2024 18:56:47 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT BakerAdder__inv FROM CELL inv{sch}
+.SUBCKT BakerAdder__inv in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS BakerAdder__inv
+
+*** SUBCIRCUIT BakerAdder__BakerAdder FROM CELL BakerAdder{sch}
+.SUBCKT BakerAdder__BakerAdder A B Cin Cout SUM
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 Coutbar A net@26 gnd NMOS L=0.6U W=3U
+Mnmos-4@1 net@26 B gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@2 Coutbar Cin net@34 gnd NMOS L=0.6U W=3U
+Mnmos-4@3 net@34 A gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@4 net@34 B gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@12 net@211 A net@244 gnd NMOS L=0.6U W=3U
+Mnmos-4@13 net@244 B net@255 gnd NMOS L=0.6U W=3U
+Mnmos-4@14 net@255 Cin gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@15 net@211 Coutbar net@190 gnd NMOS L=0.6U W=3U
+Mnmos-4@16 net@190 A gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@17 net@190 B gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@18 net@190 Cin gnd gnd NMOS L=0.6U W=3U
+Mpmos-4@0 net@14 A vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@1 net@14 B vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@2 net@147 B net@14 vdd PMOS L=0.6U W=6U
+Mpmos-4@3 Coutbar A net@147 vdd PMOS L=0.6U W=6U
+Mpmos-4@4 Coutbar Cin net@14 vdd PMOS L=0.6U W=6U
+Mpmos-4@12 net@220 A vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@13 net@220 B vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@14 net@220 Cin vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@15 net@211 Coutbar net@220 vdd PMOS L=0.6U W=6U
+Mpmos-4@16 net@224 A net@220 vdd PMOS L=0.6U W=6U
+Mpmos-4@17 net@227 B net@224 vdd PMOS L=0.6U W=6U
+Mpmos-4@18 net@211 Cin net@227 vdd PMOS L=0.6U W=6U
+Xinv@3 Coutbar Cout BakerAdder__inv
+Xinv@4 net@211 SUM BakerAdder__inv
+.ENDS BakerAdder__BakerAdder
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: BakerAdder_sim{sch}
+XBakerAdd@0 A B Cin COUT SUM BakerAdder__BakerAdder
+Xinv@2 SUM inv@2_out BakerAdder__inv
+Xinv@3 COUT inv@3_out BakerAdder__inv
+
+* Spice Code nodes in cell cell 'BakerAdder_sim{sch}'
+VDD VDD 0 DC 5
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 25N 50N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+VINCin Cin 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+.TRAN 0 400N
+.INCLUDE C:\Users\R9000X\Electric\C5_Models.txt
+.END

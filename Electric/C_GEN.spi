@@ -1,0 +1,85 @@
+*** SPICE deck for cell C_GEN{sch} from library my_device_widths
+*** Created on 星期四 四月 24, 2025 19:42:58
+*** Last revised on 星期二 五月 06, 2025 19:55:27
+*** Written on 星期二 五月 06, 2025 19:55:29 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+*** SUBCIRCUIT my_device_widths__2_1MUX FROM CELL 2_1MUX{sch}
+.SUBCKT my_device_widths__2_1MUX A B Cin OUT
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 A net@98 OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 OUT Cin B gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 A Cin OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@1 OUT net@98 B vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 Cin net@98 my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell '2_1MUX{sch}'
+#VDD VDD 0 DC 5
+#VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 25N 50N
+#VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+#VINCin Cin 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+#.TRAN 0 400N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.ENDS my_device_widths__2_1MUX
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: C_GEN{sch}
+Mnmos-4@0 net@31 S3 gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@32 net@2 net@31 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@33 net@18 net@32 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 net@23 S0 net@33 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 net@48 S3 vdd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@5 net@50 net@2 net@48 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@6 net@51 net@18 net@50 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@7 net@23 net@8 net@51 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@8 net@82 net@11 vdd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@9 net@84 S2 net@82 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@10 net@24 S1 net@84 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@11 net@23 S0 net@24 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@12 net@73 S3 gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@13 net@4 net@2 net@73 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@14 net@7 S1 net@4 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@15 net@23 net@8 net@7 gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 gnd net@11 net@39 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@39 S2 net@40 vdd PMOS L=0.6U W=9U
+Mpmos-4@2 net@40 S1 net@41 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@41 net@8 net@23 vdd PMOS L=0.6U W=9U
+Mpmos-4@4 vdd net@11 net@60 vdd PMOS L=0.6U W=9U
+Mpmos-4@5 net@60 S2 net@66 vdd PMOS L=0.6U W=9U
+Mpmos-4@6 net@66 S1 net@62 vdd PMOS L=0.6U W=9U
+Mpmos-4@7 net@62 S0 net@23 vdd PMOS L=0.6U W=9U
+Mpmos-4@8 vdd S3 net@90 vdd PMOS L=0.6U W=9U
+Mpmos-4@9 net@90 net@2 net@100 vdd PMOS L=0.6U W=9U
+Mpmos-4@10 net@100 net@18 net@104 vdd PMOS L=0.6U W=9U
+Mpmos-4@11 net@104 net@8 net@23 vdd PMOS L=0.6U W=9U
+Mpmos-4@12 gnd net@11 net@71 vdd PMOS L=0.6U W=9U
+Mpmos-4@13 net@71 S2 net@21 vdd PMOS L=0.6U W=9U
+Mpmos-4@14 net@21 net@18 net@29 vdd PMOS L=0.6U W=9U
+Mpmos-4@15 net@29 S0 net@23 vdd PMOS L=0.6U W=9U
+X_2_1MUX@0 Cin net@23 C_Sel Cout my_device_widths__2_1MUX
+Xmy_inv_4@0 S3 net@11 my_device_widths__my_inv_4
+Xmy_inv_4@1 S2 net@2 my_device_widths__my_inv_4
+Xmy_inv_4@2 S1 net@18 my_device_widths__my_inv_4
+Xmy_inv_4@3 S0 net@8 my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell 'C_GEN{sch}'
+VDD VDD 0 DC 5
+VINC_Sel C_Sel 0 DC 0 PULSE 0 5 1N 1N 1N 1000N 1000N
+VINS0 S0 0 DC 0 PULSE 0 5 1N 1N 1N 500N 1000N
+VINS1 S1 0 DC 0 PULSE 0 5 1N 1N 1N 0N 1000N
+VINS2 S2 0 DC 0 PULSE 0 5 1N 1N 1N 0N 1000N
+VINS3 S3 0 DC 0 PULSE 0 5 1N 1N 1N 1000N 1000N
+.TRAN 0 1000N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

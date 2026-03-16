@@ -1,0 +1,38 @@
+*** SPICE deck for cell AND_sim{sch} from library my_device_widths
+*** Created on 星期一 十一月 25, 2024 10:20:04
+*** Last revised on 星期三 四月 23, 2025 16:18:40
+*** Written on 星期三 四月 23, 2025 16:18:41 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+*** SUBCIRCUIT my_device_widths__AND FROM CELL AND{sch}
+.SUBCKT my_device_widths__AND A AandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 net@11 A net@1 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@1 B gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@11 B vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@11 A vdd vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 net@11 AandB my_device_widths__my_inv_4
+.ENDS my_device_widths__AND
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: AND_sim{sch}
+XAND@0 in out vdd my_device_widths__AND
+
+* Spice Code nodes in cell cell 'AND_sim{sch}'
+vdd vdd 0 dc 5
+vin in 0 dc 0 pulse 0 5 10n 1n
+cload out 0 250fF
+.tran 0 400n
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

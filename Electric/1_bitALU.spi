@@ -1,0 +1,321 @@
+*** SPICE deck for cell 1_bitALU{sch} from library my_device_widths
+*** Created on 星期四 四月 24, 2025 19:50:33
+*** Last revised on 星期四 四月 24, 2025 20:29:45
+*** Written on 星期四 四月 24, 2025 20:30:19 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+*** SUBCIRCUIT my_device_widths__2_1MUX FROM CELL 2_1MUX{sch}
+.SUBCKT my_device_widths__2_1MUX A B Cin OUT
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 A net@98 OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 OUT Cin B gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 A Cin OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@1 OUT net@98 B vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 Cin net@98 my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell '2_1MUX{sch}'
+#VDD VDD 0 DC 5
+#VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 25N 50N
+#VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+#VINCin Cin 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+#.TRAN 0 400N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.ENDS my_device_widths__2_1MUX
+
+*** SUBCIRCUIT my_device_widths__C_GEN FROM CELL C_GEN{sch}
+.SUBCKT my_device_widths__C_GEN C_Sel Cin Cout S0 S1 S2 S3
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 net@31 S3 gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@32 net@2 net@31 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@33 net@18 net@32 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 net@23 S0 net@33 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 net@48 S3 vdd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@5 net@50 net@2 net@48 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@6 net@51 net@18 net@50 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@7 net@23 net@8 net@51 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@8 net@82 net@11 vdd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@9 net@84 S2 net@82 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@10 net@24 S1 net@84 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@11 net@23 S0 net@24 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@12 net@73 S3 gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@13 net@4 net@2 net@73 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@14 net@7 S1 net@4 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@15 net@23 net@8 net@7 gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 gnd net@11 net@39 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@39 S2 net@40 vdd PMOS L=0.6U W=9U
+Mpmos-4@2 net@40 S1 net@41 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@41 net@8 net@23 vdd PMOS L=0.6U W=9U
+Mpmos-4@4 vdd net@11 net@60 vdd PMOS L=0.6U W=9U
+Mpmos-4@5 net@60 S2 net@66 vdd PMOS L=0.6U W=9U
+Mpmos-4@6 net@66 S1 net@62 vdd PMOS L=0.6U W=9U
+Mpmos-4@7 net@62 S0 net@23 vdd PMOS L=0.6U W=9U
+Mpmos-4@8 vdd S3 net@90 vdd PMOS L=0.6U W=9U
+Mpmos-4@9 net@90 net@2 net@100 vdd PMOS L=0.6U W=9U
+Mpmos-4@10 net@100 net@18 net@104 vdd PMOS L=0.6U W=9U
+Mpmos-4@11 net@104 net@8 net@23 vdd PMOS L=0.6U W=9U
+Mpmos-4@12 gnd net@11 net@71 vdd PMOS L=0.6U W=9U
+Mpmos-4@13 net@71 S2 net@21 vdd PMOS L=0.6U W=9U
+Mpmos-4@14 net@21 net@18 net@29 vdd PMOS L=0.6U W=9U
+Mpmos-4@15 net@29 S0 net@23 vdd PMOS L=0.6U W=9U
+X_2_1MUX@0 Cin net@23 C_Sel Cout my_device_widths__2_1MUX
+Xmy_inv_4@0 S3 net@11 my_device_widths__my_inv_4
+Xmy_inv_4@1 S2 net@2 my_device_widths__my_inv_4
+Xmy_inv_4@2 S1 net@18 my_device_widths__my_inv_4
+Xmy_inv_4@3 S0 net@8 my_device_widths__my_inv_4
+.ENDS my_device_widths__C_GEN
+
+*** SUBCIRCUIT my_device_widths__8_1MUX FROM CELL 8_1MUX{sch}
+.SUBCKT my_device_widths__8_1MUX I1 I2 I3 I4 I5 I6 I7 I8 OUT S0 S1 S2
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 I1 S2bar net@1 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@1 S1bar net@3 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@3 S0bar OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 I2 S2bar net@19 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 net@19 S1bar net@20 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@5 net@20 S0 OUT OUT NMOS L=0.6U W=7.5U
+Mnmos-4@6 I3 S2bar net@39 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@7 net@39 S1 net@40 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@8 net@40 S0bar OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@9 I4 S2bar net@57 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@10 net@57 S1 net@58 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@11 net@58 S0 OUT OUT NMOS L=0.6U W=7.5U
+Mnmos-4@12 I5 S2 net@70 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@13 net@70 S1bar net@71 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@14 net@71 S0bar OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@15 I6 S2 net@83 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@16 net@83 S1bar net@84 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@17 net@84 S0 nmos-4@17_s OUT NMOS L=0.6U W=7.5U
+Mnmos-4@18 I7 S2 net@97 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@19 net@97 S1 net@96 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@20 net@96 S0bar OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@21 I8 S2 net@109 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@22 net@109 S1 net@110 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@23 net@110 S0 OUT gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@5 S1 net@6 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@6 S0 OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@2 I1 S2 net@5 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 I2 S2 net@29 vdd PMOS L=0.6U W=9U
+Mpmos-4@4 net@29 S1 net@30 vdd PMOS L=0.6U W=9U
+Mpmos-4@5 net@30 S0bar OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@6 I3 S2 net@53 vdd PMOS L=0.6U W=9U
+Mpmos-4@7 net@53 S1bar net@54 pmos-4@7_b PMOS L=0.6U W=9U
+Mpmos-4@8 net@54 S0 OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@9 I4 S2 net@62 vdd PMOS L=0.6U W=9U
+Mpmos-4@10 net@62 S1bar net@63 pmos-4@10_b PMOS L=0.6U W=9U
+Mpmos-4@11 net@63 S0bar OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@12 I5 S2bar net@75 vdd PMOS L=0.6U W=9U
+Mpmos-4@13 net@75 S1 net@76 vdd PMOS L=0.6U W=9U
+Mpmos-4@14 net@76 S0 OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@15 I6 S2bar net@91 vdd PMOS L=0.6U W=9U
+Mpmos-4@16 net@91 S1 net@88 vdd PMOS L=0.6U W=9U
+Mpmos-4@17 net@88 S0bar OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@18 I7 S2bar net@101 vdd PMOS L=0.6U W=9U
+Mpmos-4@19 net@101 S1bar net@102 vdd PMOS L=0.6U W=9U
+Mpmos-4@20 net@102 S0 OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@21 I8 S2bar net@117 vdd PMOS L=0.6U W=9U
+Mpmos-4@22 net@117 S1bar net@116 vdd PMOS L=0.6U W=9U
+Mpmos-4@23 net@116 S0bar OUT vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 S2 S2bar my_device_widths__my_inv_4
+Xmy_inv_4@1 S1 S1bar my_device_widths__my_inv_4
+Xmy_inv_4@2 S0 S0bar my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell '8_1MUX{sch}'
+#VDD VDD 0 DC 5
+#VINI1 I1 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+#VINI2 I2 0 DC 0 PULSE 0 5 1N 1N 1N 150N 200N
+#VINI3 I3 0 DC 0 PULSE 0 5 1N 1N 1N 250N 300N
+#VINI4 I4 0 DC 0 PULSE 0 5 1N 1N 1N 350N 400N
+#VINI5 I5 0 DC 0 PULSE 0 5 1N 1N 1N 450N 500N
+#VINI6 I6 0 DC 0 PULSE 0 5 1N 1N 1N 550N 600N
+#VINI7 I7 0 DC 0 PULSE 0 5 1N 1N 1N 650N 700N
+#VINI8 I8 0 DC 0 PULSE 0 5 1N 1N 1N 750N 800N
+#VINIS2 S2 0 DC 0 PULSE 0 5 1N 1N 1N 200N 300N
+#VINIS1 S1 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+#VINIS0 S0 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+#.TRAN 0 800N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.ENDS my_device_widths__8_1MUX
+
+*** SUBCIRCUIT my_device_widths__AND FROM CELL AND{sch}
+.SUBCKT my_device_widths__AND A AandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 net@11 A net@1 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@1 B gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@11 B vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@11 A vdd vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 net@11 AandB my_device_widths__my_inv_4
+.ENDS my_device_widths__AND
+
+*** SUBCIRCUIT my_device_widths__NAND FROM CELL NAND{sch}
+.SUBCKT my_device_widths__NAND A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 AnandB A net@18 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@18 B gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 AnandB B vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 AnandB A vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__NAND
+
+*** SUBCIRCUIT my_device_widths__NOR FROM CELL NOR{sch}
+.SUBCKT my_device_widths__NOR A AnorB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 AnorB A gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 AnorB B gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@52 A vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 AnorB B net@52 vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__NOR
+
+*** SUBCIRCUIT my_device_widths__OR FROM CELL OR{sch}
+.SUBCKT my_device_widths__OR A AorB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 net@1 A gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@1 B gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@47 A vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@1 B net@47 vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 net@1 AorB my_device_widths__my_inv_4
+.ENDS my_device_widths__OR
+
+*** SUBCIRCUIT my_device_widths__inv FROM CELL inv{sch}
+.SUBCKT my_device_widths__inv in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__inv
+
+*** SUBCIRCUIT my_device_widths__XNOR FROM CELL XNOR{sch}
+.SUBCKT my_device_widths__XNOR A AxnorB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 net@1 B net@37 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@1 Bbar net@11 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@37 A gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 net@11 Abar gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 AxnorB net@1 gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@1 B net@16 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@16 Abar vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@2 net@1 Bbar net@25 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@25 A vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@4 AxnorB net@1 vdd vdd PMOS L=0.6U W=9U
+Xinv@0 A Abar my_device_widths__inv
+Xinv@1 B Bbar my_device_widths__inv
+.ENDS my_device_widths__XNOR
+
+*** SUBCIRCUIT my_device_widths__XOR FROM CELL XOR{sch}
+.SUBCKT my_device_widths__XOR A B OUT
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 OUT B net@9 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 OUT Bbar net@35 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@9 A gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 net@35 Abar gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 OUT B net@44 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@44 Abar vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@2 OUT Bbar net@6 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@6 A vdd vdd PMOS L=0.6U W=9U
+Xinv@0 A Abar my_device_widths__inv
+Xinv@1 B Bbar my_device_widths__inv
+.ENDS my_device_widths__XOR
+
+*** SUBCIRCUIT my_device_widths__Logic_ALU FROM CELL Logic_ALU{sch}
+.SUBCKT my_device_widths__Logic_ALU A B OUT S0 S1 S2
+** GLOBAL gnd
+** GLOBAL vdd
+X_8_1MUX@1 net@20 net@23 net@26 net@30 net@37 net@34 net@31 gnd OUT S0 S1 S2 my_device_widths__8_1MUX
+XAND@0 A net@37 B my_device_widths__AND
+XNAND@0 A net@30 B my_device_widths__NAND
+XNOR@0 A net@34 B my_device_widths__NOR
+XOR@0 A net@20 B my_device_widths__OR
+XXNOR@0 A net@31 B my_device_widths__XNOR
+XXOR@0 A B net@26 my_device_widths__XOR
+Xmy_inv_4@0 A net@23 my_device_widths__my_inv_4
+.ENDS my_device_widths__Logic_ALU
+
+*** SUBCIRCUIT my_device_widths__Y_GEN FROM CELL Y_GEN{sch}
+.SUBCKT my_device_widths__Y_GEN bi S0 S1 S2 S3 yi
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 net@32 S3 bi gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@34 net@60 net@32 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@36 net@157 net@34 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 yi S0 net@36 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 net@58 S3 net@69 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@5 net@61 net@60 net@58 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@6 net@64 net@157 net@61 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@7 yi net@65 net@64 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@9 net@131 net@73 gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@10 net@134 S2 net@131 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@11 net@206 S1 net@134 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@12 yi S0 net@206 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@13 net@113 S3 vdd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@14 net@185 net@60 net@113 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@15 net@188 S1 net@185 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@16 yi net@65 net@188 gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 bi net@73 net@44 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@44 S2 net@47 vdd PMOS L=0.6U W=9U
+Mpmos-4@2 net@47 S1 net@49 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@49 net@65 yi vdd PMOS L=0.6U W=9U
+Mpmos-4@4 net@69 net@73 net@75 vdd PMOS L=0.6U W=9U
+Mpmos-4@5 net@75 S2 net@90 vdd PMOS L=0.6U W=9U
+Mpmos-4@6 net@90 S1 net@82 vdd PMOS L=0.6U W=9U
+Mpmos-4@7 net@82 S0 yi vdd PMOS L=0.6U W=9U
+Mpmos-4@9 gnd S3 net@149 vdd PMOS L=0.6U W=9U
+Mpmos-4@10 net@149 net@60 net@168 vdd PMOS L=0.6U W=9U
+Mpmos-4@11 net@168 net@157 net@172 vdd PMOS L=0.6U W=9U
+Mpmos-4@12 net@172 net@65 yi vdd PMOS L=0.6U W=9U
+Mpmos-4@13 vdd net@73 net@108 vdd PMOS L=0.6U W=9U
+Mpmos-4@14 net@108 S2 net@202 vdd PMOS L=0.6U W=9U
+Mpmos-4@15 net@202 net@157 net@238 vdd PMOS L=0.6U W=9U
+Mpmos-4@16 net@238 S0 yi vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 S3 net@73 my_device_widths__my_inv_4
+Xmy_inv_4@2 S2 net@60 my_device_widths__my_inv_4
+Xmy_inv_4@3 S1 net@157 my_device_widths__my_inv_4
+Xmy_inv_4@4 S0 net@65 my_device_widths__my_inv_4
+Xmy_inv_4@5 bi net@69 my_device_widths__my_inv_4
+.ENDS my_device_widths__Y_GEN
+
+*** SUBCIRCUIT my_device_widths__fulladdernand FROM CELL fulladdernand{sch}
+.SUBCKT my_device_widths__fulladdernand A B Cin Cout SUM
+** GLOBAL gnd
+** GLOBAL vdd
+XNAND@0 A net@13 B my_device_widths__NAND
+XNAND@1 A net@20 net@13 my_device_widths__NAND
+XNAND@2 net@13 net@23 B my_device_widths__NAND
+XNAND@3 net@20 AxorB net@23 my_device_widths__NAND
+XNAND@4 AxorB net@33 Cin my_device_widths__NAND
+XNAND@5 AxorB net@38 net@33 my_device_widths__NAND
+XNAND@6 net@33 net@39 Cin my_device_widths__NAND
+XNAND@7 net@38 SUM net@39 my_device_widths__NAND
+XNAND@8 A net@47 B my_device_widths__NAND
+XNAND@9 Cin net@54 AxorB my_device_widths__NAND
+XNAND@10 net@47 AB net@47 my_device_widths__NAND
+XNAND@11 net@54 net@66 net@54 my_device_widths__NAND
+XNAND@12 AB net@71 AB my_device_widths__NAND
+XNAND@13 net@66 net@74 net@66 my_device_widths__NAND
+XNAND@14 net@71 Cout net@74 my_device_widths__NAND
+.ENDS my_device_widths__fulladdernand
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: 1_bitALU{sch}
+X_2_1MUX@0 net@7 net@4 S3 OUT my_device_widths__2_1MUX
+XC_GEN@0 C_Sel Cin net@0 S0 S1 S2 S3 my_device_widths__C_GEN
+XLogic_AL@0 A B net@4 S0 S1 S2 my_device_widths__Logic_ALU
+XY_GEN@0 B S0 S1 S2 S3 net@10 my_device_widths__Y_GEN
+Xfulladde@0 A net@10 net@0 Cout net@7 my_device_widths__fulladdernand
+.END

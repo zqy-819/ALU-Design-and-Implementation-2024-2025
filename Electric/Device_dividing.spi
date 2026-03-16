@@ -1,0 +1,21 @@
+*** SPICE deck for cell Device_dividing{sch} from library my_device_widths
+*** Created on 星期日 四月 20, 2025 16:55:20
+*** Last revised on 星期日 四月 20, 2025 17:04:07
+*** Written on 星期日 四月 20, 2025 17:05:13 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd
+
+*** TOP LEVEL CELL: my_device_widths:Device_dividing{sch}
+MNMOS1 D1 G gnd gnd NMOS L=0.6U W=15U
+MNMOS2 D1 G gnd gnd NMOS L=0.6U W=7.5U
+MNMOS3 D1 G gnd gnd NMOS L=0.6U W=7.5U
+
+* Spice Code nodes in cell cell 'my_device_widths:Device_dividing{sch}'
+vs S1 0 DC 0
+vg G 0 DC 3
+vd D1 0 DC 5
+.dc vd 0 5 1m vg 0 5
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

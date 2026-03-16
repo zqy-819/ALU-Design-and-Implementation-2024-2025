@@ -1,0 +1,32 @@
+*** SPICE deck for cell NMIRROR3{sch} from library Lab
+*** Created on 星期三 三月 12, 2025 17:41:12
+*** Last revised on 星期一 四月 07, 2025 10:56:47
+*** Written on 星期一 四月 07, 2025 10:56:49 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: NMIRROR3{sch}
+MM2 vref vref gnd gnd NMOS L=0.6U W=3U
+MM3 VX vref gnd gnd NMOS L=0.6U W=12U
+MM4 vref_1 vref_1 vref gnd NMOS L=0.6U W=3U
+MM5 VD vref_1 VX gnd NMOS L=0.6U W=12U
+MM6 VD vref gnd gnd NMOS L=0.6U W=12U
+IDCCurren@0 vdd vref_1 DC 10uA
+
+* Spice Code nodes in cell cell 'NMIRROR3{sch}'
+#Zhang Qinyan
+#Spice Code 26/3/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+VDD VDD 0 DC 5 
+VD VD 0 DC 2V
+#.DC VD 0 5 0.0001
+##############################################
+#################DC SWEEP#####################
+#############################################
+.END

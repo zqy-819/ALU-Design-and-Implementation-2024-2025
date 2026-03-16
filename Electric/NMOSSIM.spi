@@ -1,0 +1,28 @@
+*** SPICE deck for cell NMOSSIM{sch} from library Lab
+*** Created on 星期三 二月 19, 2025 16:41:39
+*** Last revised on 星期三 三月 19, 2025 20:27:18
+*** Written on 星期日 四月 20, 2025 17:02:30 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd
+
+*** TOP LEVEL CELL: NMOSSIM{sch}
+Mnmos-4@0 net@10 net@8 gnd gnd NMOS L=0.6U W=3U
+VVDS net@10 gnd DC 0V
+VVGS net@8 gnd DC 2.5V
+
+* Spice Code nodes in cell cell 'NMOSSIM{sch}'
+#Zhang Qinyan
+#Spice Code 19/2/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+#.op
+##############################################
+#################DC SWEEP#####################
+#.DC VVDS 0 5 0.01 VVGS 0 5 1
+.DC VVDS 0 5 0.01 
+#############################################
+.END

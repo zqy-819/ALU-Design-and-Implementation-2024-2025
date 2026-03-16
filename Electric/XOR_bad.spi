@@ -1,0 +1,30 @@
+*** SPICE deck for cell XOR_bad{sch} from library my_device_widths
+*** Created on 星期一 四月 21, 2025 16:43:42
+*** Last revised on 星期一 四月 21, 2025 17:17:43
+*** Written on 星期一 四月 21, 2025 17:17:46 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: XOR_bad{sch}
+Mnmos-4@0 A B net@10 gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@10 B net@1 vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 A net@1 my_device_widths__my_inv_4
+Xmy_inv_4@1 net@10 OUT my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell 'XOR_bad{sch}'
+VDD VDD 0 DC 5
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 200N 400N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+.TRAN 0 800N
+.INCLUDE C:\Users\R9000X\Electric\C5_Models.txt
+.END

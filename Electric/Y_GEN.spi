@@ -1,0 +1,66 @@
+*** SPICE deck for cell Y_GEN{sch} from library my_device_widths
+*** Created on 星期四 四月 24, 2025 19:11:35
+*** Last revised on 星期二 五月 06, 2025 19:53:42
+*** Written on 星期二 五月 06, 2025 19:53:50 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Y_GEN{sch}
+Mnmos-4@0 net@32 S3 bi gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@34 net@255 net@32 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 net@36 net@246 net@34 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 yi S0 net@36 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 net@58 S3 net@69 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@5 net@61 net@255 net@58 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@6 net@64 net@246 net@61 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@7 yi net@65 net@64 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@9 net@131 net@73 gnd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@10 net@134 S2 net@131 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@11 net@206 S1 net@134 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@12 yi S0 net@206 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@13 net@113 S3 vdd gnd NMOS L=0.6U W=7.5U
+Mnmos-4@14 net@185 net@255 net@113 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@15 net@188 S1 net@185 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@16 yi net@65 net@188 gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 bi net@73 net@44 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@44 S2 net@47 vdd PMOS L=0.6U W=9U
+Mpmos-4@2 net@47 S1 net@49 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@49 net@65 yi vdd PMOS L=0.6U W=9U
+Mpmos-4@4 net@69 net@73 net@75 vdd PMOS L=0.6U W=9U
+Mpmos-4@5 net@75 S2 net@90 vdd PMOS L=0.6U W=9U
+Mpmos-4@6 net@90 S1 net@82 vdd PMOS L=0.6U W=9U
+Mpmos-4@7 net@82 S0 yi vdd PMOS L=0.6U W=9U
+Mpmos-4@9 gnd S3 net@149 vdd PMOS L=0.6U W=9U
+Mpmos-4@10 net@149 net@255 net@168 vdd PMOS L=0.6U W=9U
+Mpmos-4@11 net@168 net@246 net@172 vdd PMOS L=0.6U W=9U
+Mpmos-4@12 net@172 net@65 yi vdd PMOS L=0.6U W=9U
+Mpmos-4@13 vdd net@73 net@108 vdd PMOS L=0.6U W=9U
+Mpmos-4@14 net@108 S2 net@202 vdd PMOS L=0.6U W=9U
+Mpmos-4@15 net@202 net@246 net@238 vdd PMOS L=0.6U W=9U
+Mpmos-4@16 net@238 S0 yi vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 S3 net@73 my_device_widths__my_inv_4
+Xmy_inv_4@4 S0 net@65 my_device_widths__my_inv_4
+Xmy_inv_4@5 bi net@69 my_device_widths__my_inv_4
+Xmy_inv_4@6 S1 net@246 my_device_widths__my_inv_4
+Xmy_inv_4@7 S2 net@255 my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell 'Y_GEN{sch}'
+VDD VDD 0 DC 5
+VINbi bi 0 DC 0 PULSE 0 5 1N 1N 1N 200N 300N
+VINS0 S0 0 DC 0 PULSE 0 5 1N 1N 1N 500N 1000N
+VINS1 S1 0 DC 0 PULSE 0 5 1N 1N 1N 0N 1000N
+VINS2 S2 0 DC 0 PULSE 0 5 1N 1N 1N 0N 1000N
+VINS3 S3 0 DC 0 PULSE 0 5 1N 1N 1N 1000N 1000N
+.TRAN 0 1000N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

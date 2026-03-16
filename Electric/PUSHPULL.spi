@@ -1,0 +1,27 @@
+*** SPICE deck for cell PUSHPULL{lay} from library Lab
+*** Created on 星期三 二月 26, 2025 17:22:42
+*** Last revised on 星期三 三月 19, 2025 20:40:39
+*** Written on 星期三 三月 19, 2025 20:40:57 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: PUSHPULL{lay}
+Mnmos@1 gnd IN OUT gnd NMOS L=0.6U W=3U AS=7.425P AD=13.5P PS=12.3U PD=23.7U
+Mpmos@1 vdd IN OUT vdd PMOS L=0.6U W=6U AS=7.425P AD=18.45P PS=12.3U PD=29.7U
+
+* Spice Code nodes in cell cell 'PUSHPULL{lay}'
+#Zhang Qinyan
+#Spice Code 26/2/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+##############################################
+#################DC SWEEP#####################
+#.DC VVDS 0 5 0.01 VVGS 0 5 1
+VDD VDD 0 DC 5
+VIN IN 0 DC 0
+.DC VIN 0 5 0.01 
+#############################################
+.END

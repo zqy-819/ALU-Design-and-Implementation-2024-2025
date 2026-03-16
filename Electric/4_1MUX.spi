@@ -1,0 +1,48 @@
+*** SPICE deck for cell 4_1MUX{sch} from library my_device_widths
+*** Created on 星期二 四月 22, 2025 15:43:47
+*** Last revised on 星期四 四月 24, 2025 15:12:49
+*** Written on 星期四 四月 24, 2025 15:12:51 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: 4_1MUX{sch}
+Mnmos-4@0 I1 S1bar net@0 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@0 S0bar OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@2 I2 S1bar net@11 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@3 net@11 S0 OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@4 I3 S1 net@27 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@5 net@27 S0bar OUT gnd NMOS L=0.6U W=7.5U
+Mnmos-4@6 I4 S1 net@77 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@7 net@77 S0 OUT gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 I1 S1 net@1 vdd PMOS L=0.6U W=9U
+Mpmos-4@1 net@1 S0 OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@2 I2 S1 net@16 vdd PMOS L=0.6U W=9U
+Mpmos-4@3 net@16 S0bar OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@4 I3 S1bar net@29 vdd PMOS L=0.6U W=9U
+Mpmos-4@5 net@29 S0 OUT vdd PMOS L=0.6U W=9U
+Mpmos-4@6 I4 S1bar net@46 vdd PMOS L=0.6U W=9U
+Mpmos-4@7 net@46 S0bar OUT vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 S1 S1bar my_device_widths__my_inv_4
+Xmy_inv_4@1 S0 S0bar my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell '4_1MUX{sch}'
+VDD VDD 0 DC 5
+VINI1 I1 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+VINI2 I2 0 DC 0 PULSE 0 5 1N 1N 1N 150N 200N
+VINI3 I3 0 DC 0 PULSE 0 5 1N 1N 1N 250N 300N
+VINI4 I4 0 DC 0 PULSE 0 5 1N 1N 1N 350N 400N
+VINIS1 S1 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+VINIS0 S0 0 DC 0 PULSE 0 5 1N 1N 1N 75N 150N
+.TRAN 0 800N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

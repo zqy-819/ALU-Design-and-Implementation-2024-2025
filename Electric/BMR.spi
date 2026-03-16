@@ -1,0 +1,34 @@
+*** SPICE deck for cell BMR{sch} from library Lab
+*** Created on 星期三 三月 26, 2025 17:44:03
+*** Last revised on 星期三 四月 02, 2025 16:59:01
+*** Written on 星期三 四月 02, 2025 16:59:02 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: BMR{sch}
+MM1 VGSP VGSP vdd vdd PMOS L=0.6U W=6U
+MM2 VGSN VGSP vdd vdd PMOS L=0.6U W=6U
+MM3 VGSP VGSN net@26 gnd NMOS L=0.6U W=12U
+MM4 VGSN VGSN gnd gnd NMOS L=0.6U W=3U
+MM5 net@46 net@46 vdd vdd PMOS L=6U W=3U
+MM6 net@46 VGSN gnd gnd NMOS L=0.6U W=15U
+MM7 VGSP net@46 VGSN gnd NMOS L=0.6U W=3U
+Rres@0 net@26 gnd 8.6k
+
+* Spice Code nodes in cell cell 'BMR{sch}'
+#Zhang Qinyan
+#Spice Code 26/3/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+VDD VDD 0 DC 5 
+#.DC VDD 4.5 8 0.001
+#VD VD 0 DC 2V
+##############################################
+#################DC SWEEP#####################
+#############################################
+.END

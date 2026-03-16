@@ -1,0 +1,28 @@
+*** SPICE deck for cell PMOSSIM{sch} from library Lab
+*** Created on 星期三 三月 05, 2025 16:08:39
+*** Last revised on 星期六 四月 05, 2025 15:11:59
+*** Written on 星期六 四月 05, 2025 15:12:27 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+*** WARNING: no power connection for P-transistor wells in cell 'PMOSSIM{sch}'
+
+*** TOP LEVEL CELL: PMOSSIM{sch}
+Mpmos-4@0 D G S B PMOS L=0.6U W=6U
+
+* Spice Code nodes in cell cell 'PMOSSIM{sch}'
+#Zhang Qinyan
+#Spice Code 19/2/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+VS S 0 DC 0
+VG G 0 DC 2
+VB B 0 DC 0
+VD D 0 DC -5
+#################The .OP operation############
+#.op
+##############################################
+#################DC SWEEP#####################
+.DC VG 0 -5 -0.01 
+#############################################
+.END

@@ -1,0 +1,28 @@
+*** SPICE deck for cell NMOSGN{sch} from library Lab
+*** Created on 星期三 三月 05, 2025 16:52:42
+*** Last revised on 星期三 三月 05, 2025 17:06:09
+*** Written on 星期三 三月 05, 2025 17:06:11 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: NMOSGN{sch}
+MM1 vgs1 vgs1 gnd gnd NMOS L=0.6U W=3U
+MM2 vgs2 vgs2 gnd gnd NMOS L=6U W=30U
+IDCCurren@0 vdd vgs1 DC 10uA
+IDCCurren@1 vdd vgs2 DC 10uA
+
+* Spice Code nodes in cell cell 'NMOSGN{sch}'
+#Zhang Qinyan
+#Spice Code 19/2/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+VDD VDD 0 DC 5 
+##############################################
+#################DC SWEEP#####################
+#############################################
+.END

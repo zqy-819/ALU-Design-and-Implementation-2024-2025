@@ -1,0 +1,19 @@
+*** SPICE deck for cell PMOS_IV{sch} from library my_device_widths
+*** Created on 星期一 十一月 11, 2024 10:37:07
+*** Last revised on 星期一 四月 14, 2025 10:41:01
+*** Written on 星期一 四月 14, 2025 10:41:05 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global vdd
+
+*** TOP LEVEL CELL: PMOS_IV{sch}
+Mpmos-4@0 d g s vdd PMOS L=0.6U W=9U
+
+* Spice Code nodes in cell cell 'PMOS_IV{sch}'
+vs s 0 DC 5
+vg g 0 DC 0
+vd d 0 DC 0
+.dc vs 5 0 1m
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

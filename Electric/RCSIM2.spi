@@ -1,0 +1,26 @@
+*** SPICE deck for cell RCSIM2{sch} from library Lab
+*** Created on 星期一 四月 28, 2025 19:24:11
+*** Last revised on 星期一 四月 28, 2025 19:25:31
+*** Written on 星期一 四月 28, 2025 19:25:34 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Lab__CAP85fF FROM CELL CAP85fF{sch}
+.SUBCKT Lab__CAP85fF P1 P2
+
+* Spice Code nodes in cell cell 'CAP85fF{sch}'
+C1 P1 P2 85fF 
+#CAPACITANCE BETWEEN P1 AND BULK 
+#C2 P1 B 85fF
+.ENDS Lab__CAP85fF
+
+.global gnd
+
+*** TOP LEVEL CELL: RCSIM2{sch}
+Rres@0 OUT IN 100MEG
+VACVoltag@0 IN gnd DC=1V AC=5V SIN (1V 5V 800MEG 1ns)
+XCAP85fF@0 gnd OUT Lab__CAP85fF
+
+* Spice Code nodes in cell cell 'RCSIM2{sch}'
+.AC DEC 100 1k 1MEG
+.END

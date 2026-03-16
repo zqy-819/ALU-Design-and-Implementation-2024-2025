@@ -1,0 +1,60 @@
+*** SPICE deck for cell sim{sch} from library tutorial_1
+*** Created on 星期日 十一月 24, 2024 17:40:46
+*** Last revised on 星期日 十一月 24, 2024 17:41:36
+*** Written on 星期日 十一月 24, 2024 17:44:03 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT device_widths__inv FROM CELL device_widths:inv{sch}
+.SUBCKT device_widths__inv in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS device_widths__inv
+
+*** SUBCIRCUIT tutorial_1__BakerAdder FROM CELL BakerAdder{sch}
+.SUBCKT tutorial_1__BakerAdder A B Cin Cout SUM
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 Coutbar A net@26 nmos-4@0_b NMOS L=0.6U W=3U
+Mnmos-4@1 net@26 B gnd nmos-4@1_b NMOS L=0.6U W=3U
+Mnmos-4@2 Coutbar Cin net@34 nmos-4@2_b NMOS L=0.6U W=3U
+Mnmos-4@3 net@34 A gnd nmos-4@3_b NMOS L=0.6U W=3U
+Mnmos-4@4 net@34 B gnd nmos-4@4_b NMOS L=0.6U W=3U
+Mnmos-4@12 net@200 A net@244 nmos-4@12_b NMOS L=0.6U W=3U
+Mnmos-4@13 net@244 B net@255 nmos-4@13_b NMOS L=0.6U W=3U
+Mnmos-4@14 net@255 Cin gnd nmos-4@14_b NMOS L=0.6U W=3U
+Mnmos-4@15 net@200 Coutbar net@190 nmos-4@15_b NMOS L=0.6U W=3U
+Mnmos-4@16 net@190 A gnd nmos-4@16_b NMOS L=0.6U W=3U
+Mnmos-4@17 net@190 B gnd nmos-4@17_b NMOS L=0.6U W=3U
+Mnmos-4@18 net@190 Cin gnd nmos-4@18_b NMOS L=0.6U W=3U
+Mpmos-4@0 net@14 A vdd pmos-4@0_b PMOS L=0.6U W=6U
+Mpmos-4@1 net@14 B vdd pmos-4@1_b PMOS L=0.6U W=6U
+Mpmos-4@2 net@147 B net@14 pmos-4@2_b PMOS L=0.6U W=6U
+Mpmos-4@3 Coutbar A net@147 pmos-4@3_b PMOS L=0.6U W=6U
+Mpmos-4@4 Coutbar Cin net@14 pmos-4@4_b PMOS L=0.6U W=6U
+Mpmos-4@12 net@220 A vdd pmos-4@12_b PMOS L=0.6U W=6U
+Mpmos-4@13 net@220 B vdd pmos-4@13_b PMOS L=0.6U W=6U
+Mpmos-4@14 net@220 Cin vdd pmos-4@14_b PMOS L=0.6U W=6U
+Mpmos-4@15 net@200 Coutbar_1 net@220 pmos-4@15_b PMOS L=0.6U W=6U
+Mpmos-4@16 net@224 A net@220 pmos-4@16_b PMOS L=0.6U W=6U
+Mpmos-4@17 net@227 B net@224 pmos-4@17_b PMOS L=0.6U W=6U
+Mpmos-4@18 net@200 Cin net@227 pmos-4@18_b PMOS L=0.6U W=6U
+Xinv@0 Coutbar Cout device_widths__inv
+Xinv@2 net@200 SUM device_widths__inv
+.ENDS tutorial_1__BakerAdder
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: sim{sch}
+XBakerAdd@0 A B Cin Cout SUM tutorial_1__BakerAdder
+
+* Spice Code nodes in cell cell 'sim{sch}'
+VDD VDD 0 DC 5
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 25N 50N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+VINCin Cin 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+.TRAN 0 400N
+.INCLUDE C:\Users\R9000X\Electric\C5_Models.txt
+.END

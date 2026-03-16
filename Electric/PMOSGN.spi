@@ -1,0 +1,30 @@
+*** SPICE deck for cell PMOSGN{sch} from library Lab
+*** Created on 星期三 三月 05, 2025 17:17:19
+*** Last revised on 星期三 三月 05, 2025 17:36:04
+*** Written on 星期三 三月 05, 2025 17:37:22 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: PMOSGN{sch}
+MM1 vgs1 vgs1 vdd vdd PMOS L=0.6U W=6U
+MM2 vgs2 vgs2 vdd vdd PMOS L=6U W=60U
+MM3 vgs3 vgs3 vdd vdd PMOS L=0.6U W=6U
+Rres@0 gnd vgs3 390.416k
+IDCCurren@0 vgs1 gnd DC 10uA
+IDCCurren@1 vgs2 gnd DC 10uA
+
+* Spice Code nodes in cell cell 'PMOSGN{sch}'
+#Zhang Qinyan
+#Spice Code 19/2/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+VDD VDD 0 DC 5 
+##############################################
+#################DC SWEEP#####################
+#############################################
+.END

@@ -1,0 +1,40 @@
+*** SPICE deck for cell Amp1{sch} from library Lab
+*** Created on 星期三 四月 02, 2025 16:59:25
+*** Last revised on 星期三 四月 02, 2025 17:45:15
+*** Written on 星期三 四月 02, 2025 17:45:17 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Amp1{sch}
+MM1 vgsp vgsp vdd vdd PMOS L=0.6U W=6U
+MM2 vgsn vgsp vdd vdd PMOS L=0.6U W=6U
+MM3 vgsp vgsn net@56 gnd NMOS L=0.6U W=12U
+MM4 vgsn vgsn gnd gnd NMOS L=0.6U W=3U
+MM5 net@17 net@17 vdd vdd PMOS L=6U W=3U
+MM6 net@17 vgsn gnd gnd NMOS L=0.6U W=15U
+MM7 vgsp net@17 vgsn gnd NMOS L=0.6U W=3U
+MM8 vout vgsp vdd vdd PMOS L=1.2U W=12U
+MM9 vout vin gnd gnd NMOS L=1.2U W=6U
+Rres@0 net@56 gnd 8.6k
+VACVoltag@0 vin gnd DC=1.08V AC=0.02V SIN (1.08V 0.02V 200k 1ns)
+
+* Spice Code nodes in cell cell 'Amp1{sch}'
+#Zhang Qinyan
+#Spice Code 2/4/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+#.op
+VDD VDD 0 DC 5 
+#.DC VDD 4.5 8 0.001
+#Vin Vin 0 DC 1.08
+#.DC Vin 0 5 0.001
+#.tran 0 50u
+.ac dec 10K 100 1000Meg
+##############################################
+#################DC SWEEP#####################
+#############################################
+.END

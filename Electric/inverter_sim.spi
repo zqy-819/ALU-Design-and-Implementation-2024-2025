@@ -1,0 +1,26 @@
+*** SPICE deck for cell inverter_sim{sch} from library BAKERS_FILES
+*** Created on 星期一 十一月 11, 2024 14:59:31
+*** Last revised on 星期一 十一月 11, 2024 15:02:32
+*** Written on 星期四 十一月 28, 2024 19:16:55 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT BAKERS_FILES__inv_20_10 FROM CELL inv_20_10{sch}
+.SUBCKT BAKERS_FILES__inv_20_10 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 out in vdd vdd PMOS L=0.6U W=6U
+.ENDS BAKERS_FILES__inv_20_10
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: inverter_sim{sch}
+Xinv@0 in out BAKERS_FILES__inv_20_10
+
+* Spice Code nodes in cell cell 'inverter_sim{sch}'
+vdd vdd 0 DC 5
+vin in 0 DC 0
+.dc vin 0 5 1m
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

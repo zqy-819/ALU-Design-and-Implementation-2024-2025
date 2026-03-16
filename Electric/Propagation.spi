@@ -1,0 +1,19 @@
+*** SPICE deck for cell Propagation{sch} from library my_device_widths
+*** Created on 星期一 十一月 11, 2024 14:52:24
+*** Last revised on 星期四 四月 17, 2025 13:07:44
+*** Written on 星期四 四月 17, 2025 13:08:45 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Propagation{sch}
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+
+* Spice Code nodes in cell cell 'Propagation{sch}'
+vdd vdd 0 DC 5
+vin in 0 DC 0 PULSE 0 5 1N 1N 1N 250N 600N
+.TRAN 0 2000N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

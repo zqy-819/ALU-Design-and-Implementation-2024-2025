@@ -1,0 +1,85 @@
+*** SPICE deck for cell TRANADDER_sim{sch} from library my_device_widths
+*** Created on 星期六 十二月 07, 2024 15:51:32
+*** Last revised on 星期一 四月 21, 2025 15:37:19
+*** Written on 星期一 四月 21, 2025 15:53:50 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__inv_4 FROM CELL inv_4{sch}
+.SUBCKT my_device_widths__inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=3U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=6U
+.ENDS my_device_widths__inv_4
+
+*** SUBCIRCUIT my_device_widths__TRANADDER FROM CELL TRANADDER{sch}
+.SUBCKT my_device_widths__TRANADDER A B Cin COUT SUM
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 SUM B net@34 gnd NMOS L=0.6U W=3U
+Mnmos-4@1 net@34 A net@35 gnd NMOS L=0.6U W=3U
+Mnmos-4@2 net@35 Cinbar gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@3 SUM Bbar net@56 gnd NMOS L=0.6U W=3U
+Mnmos-4@4 net@56 Abar net@57 gnd NMOS L=0.6U W=3U
+Mnmos-4@5 net@57 Cinbar gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@6 SUM B net@67 gnd NMOS L=0.6U W=3U
+Mnmos-4@7 net@67 Abar net@68 gnd NMOS L=0.6U W=3U
+Mnmos-4@8 net@68 Cin gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@9 SUM Bbar net@91 gnd NMOS L=0.6U W=3U
+Mnmos-4@10 net@91 A net@92 gnd NMOS L=0.6U W=3U
+Mnmos-4@11 net@92 Cin gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@12 COUT Bbar net@169 gnd NMOS L=0.6U W=3U
+Mnmos-4@13 net@169 A net@170 gnd NMOS L=0.6U W=3U
+Mnmos-4@14 net@170 Cinbar gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@15 COUT B net@183 gnd NMOS L=0.6U W=3U
+Mnmos-4@16 net@183 Abar net@184 gnd NMOS L=0.6U W=3U
+Mnmos-4@17 net@184 Cinbar gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@18 COUT Bbar net@103 gnd NMOS L=0.6U W=3U
+Mnmos-4@19 net@103 Abar net@104 gnd NMOS L=0.6U W=3U
+Mnmos-4@20 net@104 Cinbar gnd gnd NMOS L=0.6U W=3U
+Mnmos-4@21 COUT Bbar net@130 gnd NMOS L=0.6U W=3U
+Mnmos-4@22 net@130 Abar net@131 gnd NMOS L=0.6U W=3U
+Mnmos-4@23 net@131 Cin gnd gnd NMOS L=0.6U W=3U
+Mpmos-4@0 net@329 Cinbar vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@1 net@1 A net@329 vdd PMOS L=0.6U W=6U
+Mpmos-4@2 SUM B net@1 vdd PMOS L=0.6U W=6U
+Mpmos-4@3 net@311 Cinbar vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@4 net@13 Abar net@311 vdd PMOS L=0.6U W=6U
+Mpmos-4@5 SUM Bbar net@13 vdd PMOS L=0.6U W=6U
+Mpmos-4@6 net@310 Cin vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@7 net@24 Abar net@310 vdd PMOS L=0.6U W=6U
+Mpmos-4@8 SUM B net@24 vdd PMOS L=0.6U W=6U
+Mpmos-4@9 net@309 Cin vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@10 net@81 A net@309 vdd PMOS L=0.6U W=6U
+Mpmos-4@11 SUM Bbar net@81 vdd PMOS L=0.6U W=6U
+Mpmos-4@12 net@334 Cinbar vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@13 net@140 A net@334 vdd PMOS L=0.6U W=6U
+Mpmos-4@14 COUT Bbar net@140 vdd PMOS L=0.6U W=6U
+Mpmos-4@15 net@335 Cinbar vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@16 net@147 Abar net@335 vdd PMOS L=0.6U W=6U
+Mpmos-4@17 COUT B net@147 vdd PMOS L=0.6U W=6U
+Mpmos-4@18 net@337 Cinbar vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@19 net@158 Abar net@337 vdd PMOS L=0.6U W=6U
+Mpmos-4@20 COUT Bbar net@158 vdd PMOS L=0.6U W=6U
+Mpmos-4@21 net@336 Cin vdd vdd PMOS L=0.6U W=6U
+Mpmos-4@22 net@119 Abar net@336 vdd PMOS L=0.6U W=6U
+Mpmos-4@23 COUT Bbar net@119 vdd PMOS L=0.6U W=6U
+Xinv_4@0 A Abar my_device_widths__inv_4
+Xinv_4@1 B Bbar my_device_widths__inv_4
+Xinv_4@2 Cin Cinbar my_device_widths__inv_4
+.ENDS my_device_widths__TRANADDER
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: TRANADDER_sim{sch}
+XTRANADDE@0 A B Cin COUT SUM my_device_widths__TRANADDER
+
+* Spice Code nodes in cell cell 'TRANADDER_sim{sch}'
+VDD VDD 0 DC 5
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 200N 400N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+VCIN Cin 0 DC 0 PULSE 0 5 1N 1N 1N 400N 800N
+.TRAN 0 800N
+.INCLUDE C:\Users\R9000X\Electric\C5_Models.txt
+.END

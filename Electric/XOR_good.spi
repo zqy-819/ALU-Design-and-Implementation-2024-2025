@@ -1,0 +1,47 @@
+*** SPICE deck for cell XOR_good{sch} from library my_device_widths
+*** Created on 星期一 四月 21, 2025 17:48:48
+*** Last revised on 星期一 四月 21, 2025 17:55:54
+*** Written on 星期一 四月 21, 2025 17:55:56 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__my_inv_4 FROM CELL my_inv_4{sch}
+.SUBCKT my_device_widths__my_inv_4 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 out in vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__my_inv_4
+
+*** SUBCIRCUIT my_device_widths__Three_state_gate FROM CELL Three_state_gate{sch}
+.SUBCKT my_device_widths__Three_state_gate C IN OUT
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@1 IN net@58 OUT gnd NMOS L=0.6U W=7.5U
+Mpmos-4@1 IN C OUT vdd PMOS L=0.6U W=9U
+Xmy_inv_4@0 C net@58 my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell 'Three_state_gate{sch}'
+#VDD VDD 0 DC 5
+#VIN IN 0 DC 0 PULSE 0 5 1N 1N 1N 25N 50N
+#VINC C 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+#.TRAN 0 400N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.ENDS my_device_widths__Three_state_gate
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: XOR_good{sch}
+Mnmos-4@0 A B net@8 gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@8 B net@1 vdd PMOS L=0.6U W=9U
+XThree_st@0 net@1 B net@8 my_device_widths__Three_state_gate
+Xmy_inv_4@0 A net@1 my_device_widths__my_inv_4
+Xmy_inv_4@1 net@8 OUT my_device_widths__my_inv_4
+
+* Spice Code nodes in cell cell 'XOR_good{sch}'
+VDD VDD 0 DC 5
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 200N 400N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+.TRAN 0 800N
+.INCLUDE C:\Users\R9000X\Electric\C5_Models.txt
+.END

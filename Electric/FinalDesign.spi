@@ -1,0 +1,25 @@
+*** SPICE deck for cell FinalDesign{sch} from library my_device_widths
+*** Created on 星期二 三月 11, 2025 23:49:09
+*** Last revised on 星期一 四月 28, 2025 20:34:05
+*** Written on 星期一 四月 28, 2025 20:34:34 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: FinalDesign{sch}
+MNMOS1 net@8 gnd gnd gnd NMOS L=0.6U W=7.5U
+MNMOS2 Vout# net@8 gnd gnd NMOS L=0.6U W=7.5U
+MNMOS3 Vout Vout# gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 net@8 vdd vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 vdd net@8 Vout# vdd PMOS L=0.6U W=18U
+Mpmos-4@2 vdd Vout# Vout vdd PMOS L=0.6U W=18U
+Rresnwell@2 net@8 VIN 100
+
+* Spice Code nodes in cell cell 'FinalDesign{sch}'
+VDD VDD 0 DC 5
+VIN VIN 0 DC 0 PULSE -4 8 1N 1N 1N 100N 200N
+.TRAN 0 400N
+#.OP
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

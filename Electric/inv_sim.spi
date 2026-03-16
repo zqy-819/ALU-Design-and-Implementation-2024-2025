@@ -1,0 +1,26 @@
+*** SPICE deck for cell inv_sim{sch} from library VSP
+*** Created on 星期一 十一月 11, 2024 14:59:31
+*** Last revised on 星期一 四月 14, 2025 16:12:01
+*** Written on 星期二 四月 15, 2025 11:32:58 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT VSP__inv FROM CELL inv{sch}
+.SUBCKT VSP__inv in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=7.5U
+Mpmos@0 out in vdd vdd PMOS L=0.6U W=18U
+.ENDS VSP__inv
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: inv_sim{sch}
+Xinv@0 in out VSP__inv
+
+* Spice Code nodes in cell cell 'inv_sim{sch}'
+vdd vdd 0 DC 5
+vin in 0 DC 0
+.dc vin 0 5 1m
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

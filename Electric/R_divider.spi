@@ -1,0 +1,15 @@
+*** SPICE deck for cell R_divider{sch} from library BAKERS_FILES
+*** Created on 星期六 十一月 23, 2024 15:21:32
+*** Last revised on 星期六 十一月 23, 2024 15:25:07
+*** Written on 星期四 十一月 28, 2024 19:12:36 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: R_divider{sch}
+Rresnwell@0 vout vin 10k
+Rresnwell@1 vout gnd 10k
+
+* Spice Code nodes in cell cell 'R_divider{sch}'
+vin vin 0 DC 1
+.tran 0 1
+.END

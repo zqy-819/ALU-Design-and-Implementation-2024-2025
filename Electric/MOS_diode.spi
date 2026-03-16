@@ -1,0 +1,17 @@
+*** SPICE deck for cell MOS_diode{sch} from library my_device_widths
+*** Created on 星期一 四月 28, 2025 16:16:22
+*** Last revised on 星期一 四月 28, 2025 16:22:36
+*** Written on 星期一 四月 28, 2025 16:22:38 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd
+
+*** TOP LEVEL CELL: MOS_diode{sch}
+Mnmos-4@0 vin vin gnd gnd NMOS L=0.6U W=7.5U
+
+* Spice Code nodes in cell cell 'MOS_diode{sch}'
+vin vin 0 DC 0
+.dc vin 0 5 1m 
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

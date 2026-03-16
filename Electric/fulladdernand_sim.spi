@@ -1,0 +1,57 @@
+*** SPICE deck for cell fulladdernand_sim{sch} from library my_device_widths
+*** Created on 星期一 十一月 11, 2024 21:49:57
+*** Last revised on 星期一 四月 21, 2025 11:07:43
+*** Written on 星期一 四月 21, 2025 11:29:47 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT my_device_widths__NAND FROM CELL NAND{sch}
+.SUBCKT my_device_widths__NAND A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos-4@0 AnandB A net@18 gnd NMOS L=0.6U W=7.5U
+Mnmos-4@1 net@18 B gnd gnd NMOS L=0.6U W=7.5U
+Mpmos-4@0 AnandB B vdd vdd PMOS L=0.6U W=9U
+Mpmos-4@1 AnandB A vdd vdd PMOS L=0.6U W=9U
+.ENDS my_device_widths__NAND
+
+*** SUBCIRCUIT my_device_widths__fulladdernand FROM CELL fulladdernand{sch}
+.SUBCKT my_device_widths__fulladdernand A B Cin Cout SUM
+** GLOBAL gnd
+** GLOBAL vdd
+XNAND@0 A net@13 B my_device_widths__NAND
+XNAND@1 A net@20 net@13 my_device_widths__NAND
+XNAND@2 net@13 net@23 B my_device_widths__NAND
+XNAND@3 net@20 AxorB net@23 my_device_widths__NAND
+XNAND@4 AxorB net@33 Cin my_device_widths__NAND
+XNAND@5 AxorB net@38 net@33 my_device_widths__NAND
+XNAND@6 net@33 net@39 Cin my_device_widths__NAND
+XNAND@7 net@38 SUM net@39 my_device_widths__NAND
+XNAND@8 A net@47 B my_device_widths__NAND
+XNAND@9 Cin net@54 AxorB my_device_widths__NAND
+XNAND@10 net@47 AB net@47 my_device_widths__NAND
+XNAND@11 net@54 net@66 net@54 my_device_widths__NAND
+XNAND@12 AB net@71 AB my_device_widths__NAND
+XNAND@13 net@66 net@74 net@66 my_device_widths__NAND
+XNAND@14 net@71 Cout net@74 my_device_widths__NAND
+.ENDS my_device_widths__fulladdernand
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: fulladdernand_sim{sch}
+Xfulladde@1 A B Cin Cout SUM my_device_widths__fulladdernand
+
+* Spice Code nodes in cell cell 'fulladdernand_sim{sch}'
+VDD VDD 0 DC 5
+#TRANSIENT RESPONSE
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 200N 400N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 100N 200N
+VCIN Cin 0 DC 0 PULSE 0 5 1N 1N 1N 400N 800N
+.TRAN 0 800N
+#DC SWEEP
+#VINA A 0 DC 0
+#VINB B 0 DC 5
+#.DC VINA 0 5 0.01
+#SPICE FILE LOCATION
+.INCLUDE C:\Users\R9000X\Electric\C5_models.txt
+.END

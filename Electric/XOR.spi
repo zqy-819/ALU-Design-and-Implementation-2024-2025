@@ -1,0 +1,28 @@
+*** SPICE deck for cell XOR{lay} from library my_device_widths
+*** Created on 星期三 十一月 27, 2024 19:57:18
+*** Last revised on 星期六 四月 26, 2025 11:42:19
+*** Written on 星期六 四月 26, 2025 11:42:24 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: XOR{lay}
+Mnmos@6 net@84 A gnd gnd NMOS L=0.6U W=7.5U AS=12.713P AD=13.612P PS=18U PD=19.8U
+Mnmos@8 gnd A net@88 gnd NMOS L=0.6U W=7.5U AS=3.713P AD=12.713P PS=9.15U PD=18U
+Mnmos@9 net@88 B OUT gnd NMOS L=0.6U W=7.5U AS=7.425P AD=3.713P PS=10.05U PD=9.15U
+Mnmos@10 OUT net@116 net@123 gnd NMOS L=0.6U W=7.5U AS=3.713P AD=7.425P PS=9.15U PD=10.05U
+Mnmos@11 net@123 net@84 gnd gnd NMOS L=0.6U W=7.5U AS=12.713P AD=3.713P PS=18U PD=9.15U
+Mnmos@12 gnd B net@116 gnd NMOS L=0.6U W=7.5U AS=13.612P AD=12.713P PS=19.8U PD=18U
+Mpmos@19 net@84 A vdd vdd PMOS L=0.6U W=9U AS=14.063P AD=13.612P PS=19.5U PD=19.8U
+Mpmos@20 vdd net@84 net@108 vdd PMOS L=0.6U W=9U AS=4.388P AD=14.063P PS=10.65U PD=19.5U
+Mpmos@22 OUT net@116 net@112 vdd PMOS L=0.6U W=9U AS=4.388P AD=7.425P PS=10.65U PD=10.05U
+Mpmos@24 vdd B net@116 vdd PMOS L=0.6U W=9U AS=13.612P AD=14.063P PS=19.8U PD=19.5U
+Mpmos@26 net@108 B OUT vdd PMOS L=0.6U W=9U AS=7.425P AD=4.388P PS=10.05U PD=10.65U
+Mpmos@27 net@112 A vdd vdd PMOS L=0.6U W=9U AS=14.063P AD=4.388P PS=19.5U PD=10.65U
+
+* Spice Code nodes in cell cell 'XOR{lay}'
+VDD VDD 0 DC 5
+VINA A 0 DC 0 PULSE 0 5 1N 1N 1N 25N 50N
+VINB B 0 DC 0 PULSE 0 5 1N 1N 1N 50N 100N
+.TRAN 0 400N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

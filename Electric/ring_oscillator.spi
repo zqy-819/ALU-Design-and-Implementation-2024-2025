@@ -1,0 +1,35 @@
+*** SPICE deck for cell ring_oscillator{sch} from library BAKERS_FILES
+*** Created on 星期六 十一月 23, 2024 16:07:49
+*** Last revised on 星期四 十一月 28, 2024 19:19:03
+*** Written on 星期四 十一月 28, 2024 19:19:12 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT BAKERS_FILES__inv_20_10 FROM CELL inv_20_10{sch}
+.SUBCKT BAKERS_FILES__inv_20_10 in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 out in gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 out in vdd vdd PMOS L=0.6U W=6U
+.ENDS BAKERS_FILES__inv_20_10
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: ring_oscillator{sch}
+Xinverter[0] osc_out out[0] BAKERS_FILES__inv_20_10
+Xinverter[1] out[0] out[1] BAKERS_FILES__inv_20_10
+Xinverter[2] out[1] out[2] BAKERS_FILES__inv_20_10
+Xinverter[3] out[2] out[3] BAKERS_FILES__inv_20_10
+Xinverter[4] out[3] out[4] BAKERS_FILES__inv_20_10
+Xinverter[5] out[4] out[5] BAKERS_FILES__inv_20_10
+Xinverter[6] out[5] out[6] BAKERS_FILES__inv_20_10
+Xinverter[7] out[6] out[7] BAKERS_FILES__inv_20_10
+Xinverter[8] out[7] out[8] BAKERS_FILES__inv_20_10
+Xinverter[9] out[8] out[9] BAKERS_FILES__inv_20_10
+Xinverter[10] out[9] osc_out BAKERS_FILES__inv_20_10
+
+* Spice Code nodes in cell cell 'ring_oscillator{sch}'
+vdd vdd 0 DC 5
+.tran 0 30n
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

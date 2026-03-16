@@ -1,0 +1,11 @@
+*** SPICE deck for cell inv_20_10{lay} from library BAKERS_FILES
+*** Created on 星期一 十一月 11, 2024 15:05:52
+*** Last revised on 星期一 十一月 25, 2024 19:28:38
+*** Written on 星期一 十一月 25, 2024 20:18:22 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: inv_20_10{lay}
+Mnmos@0 gnd in out gnd NMOS L=0.6U W=3U AS=7.425P AD=13.5P PS=12.3U PD=23.7U
+Mpmos@0 vdd in out vdd PMOS L=0.6U W=6U AS=7.425P AD=20.16P PS=12.3U PD=30.3U
+.END

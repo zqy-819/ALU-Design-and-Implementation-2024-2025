@@ -1,0 +1,26 @@
+*** SPICE deck for cell NMOSMIRROR{sch} from library Lab
+*** Created on 星期三 三月 12, 2025 16:16:03
+*** Last revised on 星期三 三月 12, 2025 16:20:05
+*** Written on 星期三 三月 12, 2025 16:23:14 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: NMOSMIRROR{sch}
+Mnmos-4@0 vgs_ref vgs_ref gnd gnd NMOS L=0.6U W=3U
+IDCCurren@0 vdd vgs_ref DC 10uA
+
+* Spice Code nodes in cell cell 'NMOSMIRROR{sch}'
+#Zhang Qinyan
+#Spice Code 19/2/2025 rev1.0
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+VDD VDD 0 DC 5 
+##############################################
+#################DC SWEEP#####################
+#############################################
+.END

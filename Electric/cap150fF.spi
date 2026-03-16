@@ -1,0 +1,14 @@
+*** SPICE deck for cell cap150fF{lay} from library Lab
+*** Created on 星期三 二月 12, 2025 17:07:33
+*** Last revised on 星期三 二月 12, 2025 17:30:23
+*** Written on 星期三 二月 12, 2025 17:30:43 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: cap150fF{lay}
+
+* Spice Code nodes in cell cell 'cap150fF{lay}'
+C1 P1 P2 100fF 
+#CAPACITANCE BETWEEN BULK AND P1 
+#C2 P1 B 10fF
+.END

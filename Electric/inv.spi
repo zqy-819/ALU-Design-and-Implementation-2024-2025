@@ -1,0 +1,17 @@
+*** SPICE deck for cell inv{lay} from library device_widths
+*** Created on 星期一 十一月 11, 2024 15:05:52
+*** Last revised on 星期一 十一月 11, 2024 15:28:45
+*** Written on 星期一 十一月 11, 2024 15:28:48 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: inv{lay}
+Mnmos@0 gnd in out gnd NMOS L=0.6U W=3U AS=8.775P AD=14.85P PS=12.9U PD=24.9U
+Mpmos@0 vdd in out vdd PMOS L=0.6U W=6U AS=8.775P AD=20.7P PS=12.9U PD=30.9U
+
+* Spice Code nodes in cell cell 'inv{lay}'
+vdd vdd 0 DC 5
+vin in 0 DC 0
+.dc vin 0 5 1m
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END

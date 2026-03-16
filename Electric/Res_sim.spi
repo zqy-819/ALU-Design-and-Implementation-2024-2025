@@ -1,0 +1,23 @@
+*** SPICE deck for cell Res_sim{sch} from library Lab
+*** Created on 星期六 四月 05, 2025 11:28:39
+*** Last revised on 星期六 四月 05, 2025 11:34:20
+*** Written on 星期六 四月 05, 2025 11:34:35 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd
+
+*** TOP LEVEL CELL: Res_sim{sch}
+Rresnwell@0 VIN vout 10k
+Rresnwell@1 vout gnd 10k
+
+* Spice Code nodes in cell cell 'Res_sim{sch}'
+#Zhang Qinyan
+#Spice Code 
+##################Library File################
+.include C:\Users\R9000X\Electric\C5_models.txt
+##############################################
+#################The .OP operation############
+.op
+VIN VIN 0 DC 5 
+.END

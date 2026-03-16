@@ -1,0 +1,24 @@
+*** SPICE deck for cell Propagation_sim{sch} from library my_device_widths
+*** Created on 星期四 四月 17, 2025 12:49:25
+*** Last revised on 星期四 四月 17, 2025 12:57:35
+*** Written on 星期四 四月 17, 2025 12:57:38 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Propagation_sim{sch}
+Ccap@0 in vdd 21f
+Ccap@1 gnd in 17.2f
+Ccap@3 out vdd 14f
+Ccap@4 gnd out 11.4f
+Ccap@5 gnd out 38.2f
+Rres@0 vdd net@59 1.5k
+Rres@1 net@59 gnd 600
+
+* Spice Code nodes in cell cell 'Propagation_sim{sch}'
+vdd vdd 0 DC 5
+vin in 0 DC 0 PULSE 0 5 1N 1N 1N 250N 600N
+.TRAN 0 2000N
+.include C:\Users\R9000X\Electric\C5_models.txt
+.END
